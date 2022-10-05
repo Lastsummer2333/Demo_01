@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px" class="clearfix">
+            <a class="btn btn-success" href="/keyword/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                添加应答
+            </a>
+
+            <div style="float: right;width: 300px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search for..."
+                               value="{{ search_data }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>`
+                应答短语列表
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>关键字</th>
+                    <th>应答</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in keyword %}
+                    <tr>
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.keyword }}</td>
+                        <td>{{ i.response }}</td>
+                        <th>
+                            <a class="btn btn-primary btn-xs" href="/keyword/{{ i.id }}/edit/">编辑</a>
+                            <a class="btn btn-danger btn-xs" href="/keyword/{{ i.id }}/del/">删除</a>
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+    </div>
+{% endblock %}

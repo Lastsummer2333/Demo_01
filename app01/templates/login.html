@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(../static/img/2.jpg) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #loginDiv {
+            width: 35%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 280px;
+            background-color: rgba(75, 81, 95, 0.3);
+            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
+            border-radius: 20px;
+        }
+
+        name_trip {
+            margin-left: 50px;
+            color: red;
+        }
+
+        p {
+            margin-top: 30px;
+            margin-left: 20px;
+            color: azure;
+        }
+
+        input {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 150px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 0px;
+        }
+
+        .button {
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 50px;
+            width: 100px;
+            height: 32px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="loginDiv">
+    <form method="post" style="height: 240px" novalidate>
+        {% csrf_token %}
+        <h1 style="text-align: center;color: rosybrown;">Login in</h1>
+        {#        <p>账号: <input id="account" type="text"><label id="name_trip"></label></p>#}
+        {##}
+        {#        <p>密码: <input id="password" type="password"><label id="password_trip"></label></p>#}
+
+        <div class="form-group" style="padding-top: 20px">
+            <label style="color: rosybrown">{{ form.email.label }}</label>
+            {{ form.email }}
+            <span style="color: #d43f3a">{{ form.email.errors.0 }}</span>
+        </div>
+
+        <div class="form-group" style="padding-top: 10px">
+            <label style="color: rosybrown">{{ form.password.label }}</label>
+            {{ form.password }}
+            <div style="color: #d43f3a">{{ form.password.errors.0 }}</div>
+        </div>
+
+        <div style="text-align: center;margin-top: 30px;">
+            <input type="submit" class="button" value="登录">
+            <input type="button" class="button" onclick='window.open("/regist/")' value="注册">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

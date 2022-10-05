@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>自动应答系统</title>
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+	<style>
+		.navbar-brand {
+			color: gray;
+			font-size: 25px;
+			font-weight: bold;
+		}
+
+		.table-gray {
+			margin: 0;
+			margin-top: 20px;
+			padding: 10px 7px;
+			font-weight: bold;
+			background-color: rgb(243, 243, 243);
+		}
+
+		.mr-5 {
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header
+			class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+			<a class="navbar-brand" href="#">自动应答系统</a>
+
+			<div class="col-md-3 text-end">
+				<button type="button" class="btn btn-outline-primary me-2">登录</button>
+				<button type="button" class="btn btn-primary">注册</button>
+			</div>
+		</header>
+
+		<p class="table-gray"><i class="fa fa-navicon mr-5"></i>添加关键词列表</p>
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>关键词</td>
+                        <td>应答短语</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><input type="text" placeholder="关键词" name="keyword" /></td>
+                            <td><input type="text" placeholder="应答短语" name="response" /></td>
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">添加</button>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </form>
+	</div>
+</body>
+</html>
